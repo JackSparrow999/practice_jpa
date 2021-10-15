@@ -13,10 +13,12 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 @Entity
+@Table(name = "book")
 public class Book {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private int id;
 
     @Column(nullable = false, unique = true)
@@ -27,6 +29,12 @@ public class Book {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
+
+    //owning side of the relationship
+    //this is the join column
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "summary_id", referencedColumnName = "id")
+    private Summary summary;
 
     public Book(CreateBookReq req){
         this.name = req.getName();
