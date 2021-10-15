@@ -50,4 +50,8 @@ public class BookService {
         Book b = br.mapSummaryToBook(bid, sid);
         return b != null? true: false;
     }
+
+    public int numOfBooks(){
+        return br.countNumOfBooks();
+    }
 }

@@ -51,4 +51,9 @@ public class BooksController {
         return bs.mapSummaryToBook(bid, sid);
     }
 
+    @GetMapping("/count")
+    public int countBooks(){
+        return bs.numOfBooks();
+    }
+
 }

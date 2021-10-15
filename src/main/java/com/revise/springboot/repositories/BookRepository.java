@@ -16,4 +16,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Query(value = "update book set summary_id = :sid where id = :bid returning *", nativeQuery = true)
     Book mapSummaryToBook(Integer bid, Integer sid);
 
+    @Query(value = "select count(*) from book", nativeQuery = true)
+    int countNumOfBooks();
+
 }
