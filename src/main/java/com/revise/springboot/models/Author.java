@@ -1,5 +1,6 @@
 package com.revise.springboot.models;
 
+import com.revise.springboot.dtos.AuthorReq;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,8 +19,15 @@ public class Author {
 
     String name;
 
+    int rating;
+
     //this is the owning side of relationship
     @OneToMany(mappedBy = "author")
     Set<Book> books;
+
+    public Author(AuthorReq ar){
+        this.name = ar.getName();
+        this.rating = ar.getRating();
+    }
 
 }
