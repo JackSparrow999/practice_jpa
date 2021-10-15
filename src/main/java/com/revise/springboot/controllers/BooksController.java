@@ -59,4 +59,10 @@ public class BooksController {
         return bs.numOfBooks();
     }
 
+    @GetMapping("/author")
+    public boolean mapSummaryToAuthor(@RequestParam("book_id") Integer bid,
+                                    @RequestParam("author_id") Integer aid){
+        return bs.mapAuthorToBook(bid, aid);
+    }
+
 }

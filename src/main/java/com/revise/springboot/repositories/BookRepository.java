@@ -19,4 +19,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Query(value = "select count(*) from book", nativeQuery = true)
     int countNumOfBooks();
 
+    @Query(value = "update book set author_id = :aid where id = :bid returning *", nativeQuery = true)
+    Book mapAuthorToBook(Integer bid, Integer aid);
+
 }

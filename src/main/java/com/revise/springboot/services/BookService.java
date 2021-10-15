@@ -3,8 +3,10 @@ package com.revise.springboot.services;
 import com.revise.springboot.dtos.CreateBookReq;
 import com.revise.springboot.dtos.CreateBookRes;
 import com.revise.springboot.enums.Genre;
+import com.revise.springboot.models.Author;
 import com.revise.springboot.models.Book;
 import com.revise.springboot.models.Summary;
+import com.revise.springboot.repositories.AuthorRepository;
 import com.revise.springboot.repositories.BookRepository;
 import com.revise.springboot.repositories.SummaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class BookService {
 
     @Autowired
     private SummaryRepository sr;
+
+    @Autowired
+    private AuthorRepository ar;
 
     public List<CreateBookRes> getAllBooks(){
         return br.findAll().stream().map(b -> new CreateBookRes(b))
@@ -53,5 +58,16 @@ public class BookService {
 
     public int numOfBooks(){
         return br.countNumOfBooks();
+    }
+
+    public boolean mapAuthorToBook(Integer bid, Integer aid){
+        Author a = ar.getAuthor(aid);
+        if(a == null)
+            return false;
+
+        Book b = br.findById(bid).orElse(null);
+        if(b == null)
+            return false;
+        return br.mapAuthorToBook(bid, aid) == null? false: true;
     }
 }
