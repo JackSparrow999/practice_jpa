@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -35,6 +34,10 @@ public class Book {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "summary_id", referencedColumnName = "id")
     private Summary summary;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+    private Author author;
 
     public Book(CreateBookReq req){
         this.name = req.getName();
