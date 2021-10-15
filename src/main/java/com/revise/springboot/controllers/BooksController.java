@@ -17,6 +17,9 @@ public class BooksController {
     * Each book has a one-to-one mapping with a summary. Every book has to have a summary
     * This is an example of mandatory one-to-one relationship. If no summary then foreign key
     * column remains empty.
+    *
+    * Every book can have only one author but one author can write may books.
+    * This shows an example of one to many mapping in hibernate.
     * */
 
     private BookService bs;
