@@ -48,7 +48,7 @@ public class BooksController {
         return bs.getAllBooksByGenres(Genre.fromName(genre));
     }
 
-    @GetMapping("/map")
+    @GetMapping("/summary")
     public boolean mapSummaryToBook(@RequestParam("book_id") Integer bid,
                                     @RequestParam("summary_id") Integer sid){
         return bs.mapSummaryToBook(bid, sid);
