@@ -2,6 +2,7 @@ package com.revise.springboot.controllers;
 
 import com.revise.springboot.dtos.CreateBookReq;
 import com.revise.springboot.dtos.CreateBookRes;
+import com.revise.springboot.enums.Genre;
 import com.revise.springboot.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,10 @@ public class BooksController {
     @GetMapping("/{id}")
     public CreateBookRes getBookById(@PathVariable("id") Integer id){
         return bs.getBookById(id);
+    }
+
+    public List<CreateBookRes> getBooksByGenres(@RequestParam("genre") String genre){
+        return bs.getAllBooksByGenres(Genre.fromName(genre));
     }
 
 }

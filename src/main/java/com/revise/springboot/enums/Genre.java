@@ -1,9 +1,6 @@
 package com.revise.springboot.enums;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -19,4 +16,15 @@ public enum Genre {
     DRAMA("Drama");
 
     String value;
+
+    static Map<String, Genre> mp = new HashMap<>();
+
+    static{
+        for(Genre g: Genre.values())
+            mp.put(g.toString(), g);
+    }
+
+    public static Genre fromName(String s){
+        return mp.get(s);
+    }
 }

@@ -2,6 +2,7 @@ package com.revise.springboot.services;
 
 import com.revise.springboot.dtos.CreateBookReq;
 import com.revise.springboot.dtos.CreateBookRes;
+import com.revise.springboot.enums.Genre;
 import com.revise.springboot.models.Book;
 import com.revise.springboot.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,11 @@ public class BookService {
 
     public CreateBookRes createBook(CreateBookReq req){
         return new CreateBookRes(br.save(new Book(req)));
+    }
+
+    public List<CreateBookRes> getAllBooksByGenres(Genre g){
+        return br.findAll().stream().map(b -> new CreateBookRes(b))
+                .collect(Collectors.toList());
     }
 
 }
