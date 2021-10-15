@@ -14,7 +14,8 @@ public class BooksController {
 
     /*
     * Each book has a one-to-one mapping with a summary. Every book has to have a summary
-    * This is an example of mandatory one-to-one relationship
+    * This is an example of mandatory one-to-one relationship. If no summary then foreign key
+    * column remains empty.
     * */
 
     private BookService bs;

@@ -1,5 +1,6 @@
 package com.revise.springboot.models;
 
+import com.revise.springboot.dtos.SummaryReq;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,5 +25,10 @@ public class Summary {
     //this is not the owner of the relationship
     @OneToOne(mappedBy = "summary")
     Book book;
+
+    public Summary(SummaryReq summaryReq){
+        this.summary = summaryReq.getSummary();
+        this.words = summaryReq.getSummary().split("").length;
+    }
 
 }
