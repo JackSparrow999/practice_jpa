@@ -10,11 +10,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SummaryRes {
 
+    Integer id;
+
     String summary;
 
     int words;
 
     public SummaryRes(Summary s){
+        this.id = s.getId();
         this.summary = s.getSummary();
         this.words = s.getWords();
     }
