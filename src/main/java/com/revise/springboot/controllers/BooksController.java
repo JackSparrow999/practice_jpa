@@ -12,6 +12,11 @@ import java.util.List;
 @RequestMapping("/books")
 public class BooksController {
 
+    /*
+    * Each book has a one-to-one mapping with a summary. Every book has to have a summary
+    * This is an example of mandatory one-to-one relationship
+    * */
+
     private BookService bs;
 
     @Autowired
