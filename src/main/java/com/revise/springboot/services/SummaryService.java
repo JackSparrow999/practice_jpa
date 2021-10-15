@@ -21,7 +21,7 @@ public class SummaryService {
     }
 
     public List<SummaryRes> getAllSummaries(){
-        return summaryRepository.findAll().stream()
+        return summaryRepository.getAllSummaries().stream()
                 .map(s -> new SummaryRes(s))
                 .collect(Collectors.toList());
     }
