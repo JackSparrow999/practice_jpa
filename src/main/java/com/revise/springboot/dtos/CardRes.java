@@ -19,11 +19,14 @@ public class CardRes {
 
     Integer cost;
 
+    Boolean owned;
+
     public CardRes(Card card){
         this.id = id;
         this.cardType = card.getType();
         this.borrowLimit = card.getBorrowLimit();
         this.cost = card.getCost();
+        this.owned = card.isOwned();
     }
 
 }
