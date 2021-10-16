@@ -17,7 +17,7 @@ public class CardsController {
     @Autowired
     CardService cardService;
 
-    @PostMapping
+    @PostMapping("/create")
     public CardRes createCard(@RequestBody GenerateCardReq req){
         return cardService.createCard(req);
     }

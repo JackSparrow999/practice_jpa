@@ -39,6 +39,7 @@ public class BookCardJoin {
         this.book = b;
         this.dateOfIssuance = Date.from(Instant.now());
         this.dateOfReturn = Date.from(Instant.now().plus(7, ChronoUnit.DAYS));
+        this.active = true;
     }
 
 }

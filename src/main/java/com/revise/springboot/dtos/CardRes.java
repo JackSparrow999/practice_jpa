@@ -22,7 +22,7 @@ public class CardRes {
     Boolean owned;
 
     public CardRes(Card card){
-        this.id = id;
+        this.id = card.getId();
         this.cardType = card.getType();
         this.borrowLimit = card.getBorrowLimit();
         this.cost = card.getCost();

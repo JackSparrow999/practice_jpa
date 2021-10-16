@@ -36,7 +36,7 @@ public class Card {
         this.type = cardReq.getCardType();
         this.borrowLimit = cardReq.getBorrowLimit();
         this.cost = getCost();
-        this.owned = false;
+        this.owned = true;
     }
 
 }
