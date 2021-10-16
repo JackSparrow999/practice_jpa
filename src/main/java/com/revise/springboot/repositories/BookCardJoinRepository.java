@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookCardJoinRepository extends JpaRepository<BookCardJoin, Integer> {
 
-    @Query(value = "update book_card_join set active = false where book_id = :bid and card_id = :cid returning *",
+    @Query(value = "update book_card_join set active = false " +
+            "where book_id = :bid and card_id = :cid and active = true returning *",
             nativeQuery = true)
-    public BookCardJoin returnBook(int bid, int cid);
+    BookCardJoin returnBook(int bid, int cid);
 
 }
