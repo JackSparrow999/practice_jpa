@@ -2,8 +2,11 @@ package com.revise.springboot.services;
 
 import com.revise.springboot.dtos.CardRes;
 import com.revise.springboot.dtos.GenerateCardReq;
+import com.revise.springboot.models.Book;
 import com.revise.springboot.models.BookCardJoin;
 import com.revise.springboot.models.Card;
+import com.revise.springboot.repositories.BookCardJoinRepository;
+import com.revise.springboot.repositories.BookRepository;
 import com.revise.springboot.repositories.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +21,10 @@ public class CardService {
     CardRepository cardRepository;
 
     @Autowired
-    BookCardJoin bookCardService;
+    BookCardJoinRepository bcRepository;
+
+    @Autowired
+    BookRepository bookRepository;
 
     public CardRes createCard(GenerateCardReq cardReq){
         return new CardRes(cardRepository.save(new Card(cardReq)));
@@ -29,6 +35,33 @@ public class CardService {
                 .stream()
                 .map(c -> new CardRes(c))
                 .collect(Collectors.toList());
+    }
+
+    public boolean borrowBook(int bid, int cid){
+        Book b = bookRepository.findById(bid).orElse(null);
+        Card c = cardRepository.findById(cid).orElse(null);
+
+        if(b == null || c == null)
+            return false;
+
+        if(!checkIfBorrowAllowed(b, c))
+            return false;
+
+        bcRepository.save(new BookCardJoin(b, c));
+        cardRepository.updateCost(cid, c.getCost()+5);
+
+        return true;
+    }
+
+    public boolean checkIfBorrowAllowed(Book b, Card c){
+        //can't borrow against card that is not owned
+        if(!c.isOwned())
+            return false;
+
+        if(cardRepository.numberOfBooksIssuedByCard(c.getId()) >= c.getBorrowLimit())
+            return false;
+
+        return true;
     }
 
 }

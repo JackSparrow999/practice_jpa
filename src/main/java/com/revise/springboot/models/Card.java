@@ -25,6 +25,7 @@ public class Card {
     @Enumerated(EnumType.STRING)
     CardType type;
 
+    @Column(name = "borrow_limit")
     int borrowLimit;
 
     int cost;

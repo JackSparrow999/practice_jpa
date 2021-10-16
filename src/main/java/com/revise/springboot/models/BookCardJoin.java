@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -29,5 +31,14 @@ public class BookCardJoin {
 
     @Temporal(TemporalType.TIMESTAMP)
     Date dateOfReturn;
+
+    Boolean active;
+
+    public BookCardJoin(Book b, Card c){
+        this.card = c;
+        this.book = b;
+        this.dateOfIssuance = Date.from(Instant.now());
+        this.dateOfReturn = Date.from(Instant.now().plus(7, ChronoUnit.DAYS));
+    }
 
 }
