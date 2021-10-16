@@ -18,6 +18,6 @@ public interface CardRepository extends JpaRepository<Card, Integer> {
 
     @Query(value = "select count(id) from book_card_join where bid = :bid and card_id = cid: and active = true",
             nativeQuery = true)
-    int numOfBookInstanceAlreadyBorrowedWithCard(Integer bid, Integer cid);
+    Integer numOfBookInstanceAlreadyBorrowedWithCard(Integer bid, Integer cid);
 
 }
