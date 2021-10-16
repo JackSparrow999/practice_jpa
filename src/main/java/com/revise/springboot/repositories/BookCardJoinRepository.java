@@ -13,4 +13,8 @@ public interface BookCardJoinRepository extends JpaRepository<BookCardJoin, Inte
             nativeQuery = true)
     BookCardJoin returnBook(int bid, int cid);
 
+    @Query(value = "select count(id) from book_card_join where book_id = :bid and card_id = :cid and active = true",
+            nativeQuery = true)
+    Integer numOfBookInstanceAlreadyBorrowedWithCard(Integer bid, Integer cid);
+
 }

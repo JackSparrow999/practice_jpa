@@ -63,7 +63,7 @@ public class CardService {
             return false;
 
         //can't borrow another book of same type if already borrowed once and borrow is active
-        if(cardRepository.numOfBookInstanceAlreadyBorrowedWithCard(b.getId(), c.getId()) >= 1)
+        if(bcRepository.numOfBookInstanceAlreadyBorrowedWithCard(b.getId(), c.getId()) >= 1)
             return false;
 
         return true;
