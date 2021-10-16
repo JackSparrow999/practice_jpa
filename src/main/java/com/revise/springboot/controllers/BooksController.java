@@ -18,8 +18,15 @@ public class BooksController {
     * This is an example of mandatory one-to-one relationship. If no summary then foreign key
     * column remains empty.
     *
-    * Every book can have only one author but one author can write may books.
+    * Every book can have only one author but one author can write many books.
     * This shows an example of one to many mapping in hibernate.
+    *
+    * We introduce another entity i.e. Card. This has a many to many relation with Book.
+    * One card can be used to borrow multiple books. Similarly one book can be borrowed by multiple
+    * cards.
+    *
+    * To denote the many-to-many relationship we use a join table with the entity book_card_join.
+    * We can also use the join table concept for one-to-many relationships
     * */
 
     private BookService bs;
