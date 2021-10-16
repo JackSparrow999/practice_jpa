@@ -1,5 +1,6 @@
 package com.revise.springboot.models;
 
+import com.revise.springboot.enums.CardType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,5 +20,12 @@ public class Card {
     //mappedBy stores the referenced/parent table name
     @OneToMany(mappedBy = "card")
     Set<BookCardJoin> bookCardJoin;
+
+    @Enumerated(EnumType.STRING)
+    CardType type;
+
+    int borrowLimit;
+
+    int cost;
 
 }

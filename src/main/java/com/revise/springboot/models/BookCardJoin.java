@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @NoArgsConstructor
 @Data
@@ -22,5 +23,11 @@ public class BookCardJoin {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     Book book;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    Date dateOfIssuance;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    Date dateOfReturn;
 
 }
