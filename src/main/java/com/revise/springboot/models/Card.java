@@ -25,11 +25,14 @@ public class Card {
     @Enumerated(EnumType.STRING)
     CardType type;
 
+    //max number of active books that can be borrowed at any given time
     @Column(name = "borrow_limit")
     int borrowLimit;
 
+    //total cost on card
     int cost;
 
+    //says if this is an active card or deactivated
     boolean owned;
 
     public Card(GenerateCardReq cardReq){

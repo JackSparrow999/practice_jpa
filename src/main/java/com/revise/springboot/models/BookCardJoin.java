@@ -32,6 +32,7 @@ public class BookCardJoin {
     @Temporal(TemporalType.TIMESTAMP)
     Date dateOfReturn;
 
+    //says whether this is an active borrow
     Boolean active;
 
     public BookCardJoin(Book b, Card c){
