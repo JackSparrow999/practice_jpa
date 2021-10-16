@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Set;
 
 @NoArgsConstructor
 @Data
@@ -39,6 +40,9 @@ public class Book {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     private Author author;
+
+    @OneToMany(mappedBy = "book")
+    private Set<BookCardJoin> bookCardJoin;
 
     public Book(CreateBookReq req){
         this.name = req.getName();
