@@ -1,5 +1,6 @@
 package com.revise.springboot.models;
 
+import com.revise.springboot.dtos.GenerateCardReq;
 import com.revise.springboot.enums.CardType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,14 @@ public class Card {
     int borrowLimit;
 
     int cost;
+
+    boolean owned;
+
+    public Card(GenerateCardReq cardReq){
+        this.type = cardReq.getCardType();
+        this.borrowLimit = cardReq.getBorrowLimit();
+        this.cost = getCost();
+        this.owned = false;
+    }
 
 }

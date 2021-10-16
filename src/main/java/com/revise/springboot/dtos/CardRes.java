@@ -1,6 +1,7 @@
 package com.revise.springboot.dtos;
 
 import com.revise.springboot.enums.CardType;
+import com.revise.springboot.models.Card;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,5 +18,12 @@ public class CardRes {
     Integer borrowLimit;
 
     Integer cost;
+
+    public CardRes(Card card){
+        this.id = id;
+        this.cardType = card.getType();
+        this.borrowLimit = card.getBorrowLimit();
+        this.cost = card.getCost();
+    }
 
 }
