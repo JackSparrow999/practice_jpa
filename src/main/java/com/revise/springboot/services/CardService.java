@@ -64,4 +64,16 @@ public class CardService {
         return true;
     }
 
+    public boolean returnBook(int bid, int cid){
+        Book b = bookRepository.findById(bid).orElse(null);
+        Card c = cardRepository.findById(cid).orElse(null);
+
+        if(b == null || c == null)
+            return false;
+
+        bcRepository.returnBook(bid, cid);
+
+        return true;
+    }
+
 }
